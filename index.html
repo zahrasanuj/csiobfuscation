@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c0c0d">
+  <meta name="description" content="An animated research presentation about temporal occupancy privacy and Wi-Fi channel obfuscation.">
+  <title>Beyond a Moment | Occupancy Privacy</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="deck">
+    <main id="slides" aria-label="Research presentation">
+      <section class="slide hero active" id="slide-1" data-name="The question" aria-labelledby="title-1">
+        <div class="slide-copy"><p class="eyebrow">PHYSICAL PRIVACY / WI-FI SENSING</p><h1 id="title-1">Your door is locked.<br>Your network is protected.<br><span>What about your presence?</span></h1><p class="author">Fathima Zahra Sanuj Abdulla</p></div>
+        <div class="visual hero-visual" data-visual="hook" role="img" aria-label="A person inside a locked room, with Wi-Fi signals reaching a receiver outside."></div>
+        <p class="visual-caption">A password protects the message. Radio propagation can still leave clues.</p>
+      </section>
+
+      <section class="slide" id="slide-2" data-name="How sensing works" aria-labelledby="title-2" hidden>
+        <div class="slide-heading"><p class="eyebrow">THE CONCEPT</p><h2 id="title-2">The room leaves <em>an echo.</em></h2><p class="subtitle">Different paths. One changing measurement.</p></div>
+        <div class="visual wide-visual" data-visual="propagation" role="img" aria-label="Direct and reflected Wi-Fi paths between a transmitter and receiver change when a person is present."></div>
+        <div class="scene-tools"><div class="segmented" aria-label="Room occupancy"><button class="selected" data-room="occupied" aria-pressed="true">Person present</button><button data-room="empty" aria-pressed="false">Empty room</button></div><span class="small-label">CSI = CHANNEL STATE INFORMATION</span></div>
+        <p class="visual-caption">Conceptual signal illustration · not a recording</p>
+      </section>
+
+      <section class="slide" id="slide-3" data-name="The time question" aria-labelledby="title-3" hidden>
+        <div class="slide-heading"><p class="eyebrow">THE RESEARCH QUESTION</p><h2 id="title-3">The observer <em>can wait.</em></h2><p class="subtitle">Could small clues become useful together?</p></div>
+        <div class="visual wide-visual" data-visual="history" role="img" aria-label="A short observation contains a few signal fragments. A longer history contains more observations; whether they reveal occupancy is the research question."></div>
+        <div class="scene-tools duration-tools"><span class="small-label">OBSERVATION HISTORY</span><div class="duration-picker" data-group="history"><button class="selected" data-duration="2" aria-pressed="true">2 sec</button><button data-duration="10" aria-pressed="false">10 sec</button><button data-duration="30" aria-pressed="false">30 sec</button><button data-duration="120" aria-pressed="false">2 min</button><button data-duration="600" aria-pressed="false">10 min</button></div></div>
+        <p class="visual-caption">More observations do not establish better inference. That is what we test.</p>
+      </section>
+
+      <section class="slide" id="slide-4" data-name="The proposed method" aria-labelledby="title-4" hidden>
+        <div class="slide-heading"><p class="eyebrow">THE PROPOSED METHOD</p><h2 id="title-4">Change the clues.<br><em>Coordinate the timing.</em></h2></div>
+        <div class="visual wide-visual" data-visual="filter" role="img" aria-label="A transmitter adds an artificial filter before the signal crosses the room. A receiver with a shared key compensates; the observer sees the combined channel."></div>
+        <div class="scene-tools"><div class="segmented" aria-label="Filter schedule"><button data-filter="independent" aria-pressed="false">Independent</button><button class="selected" data-filter="coordinated" aria-pressed="true">Coordinated</button></div><span class="small-label">SAME FILTER FAMILY · DIFFERENT TIMING</span></div>
+        <p class="visual-caption">Proposed scalar filter mechanism · useful recovery requires calibration and synchronization</p>
+      </section>
+
+      <section class="slide" id="slide-5" data-name="The first experiment" aria-labelledby="title-5" hidden>
+        <div class="slide-heading"><p class="eyebrow">EXPERIMENT / FIRST ESTABLISH THE BASELINE</p><h2 id="title-5">Start with a room.<br><em>And the truth.</em></h2></div>
+        <div class="visual wide-visual" data-visual="experiment" role="img" aria-label="A controlled room with transmitter, authorized receiver, observer, and separate occupancy annotations."></div>
+        <div class="scene-tools activity-tools"><div class="activity-picker" aria-label="Experiment scenario"><button class="selected" data-activity="empty" aria-pressed="true">Empty</button><button data-activity="seated" aria-pressed="false">Sitting still</button><button data-activity="walking" aria-pressed="false">Walking</button><button data-activity="entry" aria-pressed="false">Entry / exit</button><button data-activity="fan" aria-pressed="false">Fan only</button></div></div>
+      </section>
+
+      <section class="slide" id="slide-6" data-name="The fair comparison" aria-labelledby="title-6" hidden>
+        <div class="slide-heading"><p class="eyebrow">EXPERIMENT / THREE CONDITIONS</p><h2 id="title-6">More history.<br><em>The same question.</em></h2><p class="subtitle">Is the room occupied now?</p></div>
+        <div class="visual wide-visual" data-visual="comparison" role="img" aria-label="Unprotected, independent filtering and coordinated filtering are compared using histories that all end at the same decision time."></div>
+        <div class="scene-tools duration-tools"><span class="small-label">CHANGE THE HISTORY, NOT THE ENDPOINT</span><div class="duration-picker" data-group="comparison"><button class="selected" data-duration="2" aria-pressed="true">2 sec</button><button data-duration="10" aria-pressed="false">10 sec</button><button data-duration="30" aria-pressed="false">30 sec</button><button data-duration="120" aria-pressed="false">2 min</button><button data-duration="600" aria-pressed="false">10 min</button></div></div>
+        <p class="visual-caption">Train on protected data · test on separate sessions · conceptual traces, no measured results</p>
+      </section>
+
+      <section class="slide" id="slide-7" data-name="What success means" aria-labelledby="title-7" hidden>
+        <div class="slide-heading"><p class="eyebrow">THE EVALUATION</p><h2 id="title-7">Privacy should not<br><em>break the network.</em></h2></div>
+        <div class="visual wide-visual" data-visual="balance" role="img" aria-label="Three connected evaluation goals: lower unauthorized inference, useful authorized sensing, and reliable communication."></div>
+        <div class="metric-strip"><span>Occupancy inference</span><span>Entry / exit detection</span><span>Throughput &amp; packet loss</span></div>
+        <p class="visual-caption">Compare privacy at similar measured communication costs. No performance results are shown.</p>
+      </section>
+
+      <section class="slide" id="slide-8" data-name="Limits and current stage" aria-labelledby="title-8" hidden>
+        <div class="slide-heading"><p class="eyebrow">THE BOUNDARIES</p><h2 id="title-8">Know where<br><em>protection ends.</em></h2></div>
+        <div class="visual wide-visual" data-visual="limits" role="img" aria-label="Weak filter responses amplify recovery noise. Multiple receive antennas can cancel a shared scalar filter. Experiments are the next stage."></div>
+        <div class="research-stage"><span>Method proposed</span><span>Analytical limits identified</span><span class="next-stage">Hardware tests next</span></div>
+        <p class="visual-caption">Only controlled transmissions are covered. A shared scalar filter is not a universal defense.</p>
+      </section>
+
+      <section class="slide closing" id="slide-9" data-name="Beyond a moment" aria-labelledby="title-9" hidden>
+        <div class="closing-orbit" data-visual="closing" aria-hidden="true"></div>
+        <div class="closing-copy"><p class="eyebrow">TEMPORAL OCCUPANCY PRIVACY</p><h2 id="title-9">Can we hide presence<br><em>for longer than a moment?</em></h2><p class="closing-line">A specific question. A testable method. Evidence comes next.</p><p class="author">Fathima Zahra Sanuj Abdulla</p><span class="qa-label">THANK YOU / QUESTIONS</span></div>
+      </section>
+    </main>
+
+    <footer class="controls">
+      <nav class="slide-navigation" aria-label="Slide navigation"><button id="back" class="nav-button" disabled>Back</button><button id="slide-counter" class="slide-counter" aria-label="Open slide list"><strong id="current-slide">01</strong><span>/</span><span>09</span></button><button id="next" class="nav-button next-button">Next</button></nav>
+      <div class="deck-progress" id="deck-progress" aria-label="Slide progress"></div>
+    </footer>
+  </div>
+  <dialog id="help-dialog"><div class="dialog-heading"><h2>Make every moment count.</h2><button class="close-button" data-close="help-dialog" aria-label="Close shortcuts">Close</button></div><p>Nine slides. Eight minutes. Two minutes for questions.</p><div class="shortcut-grid"><span>Next / back</span><kbd>← →</kbd><span>Next slide</span><kbd>Space</kbd><span>Jump to a slide</span><kbd>1–9</kbd><span>Pause illustrations</span><kbd>P</kbd><span>Speaker notes</span><kbd>N</kbd><span>Fullscreen</span><kbd>F</kbd><span>Close / shortcuts</span><kbd>Esc / H</kbd></div><p class="dialog-footnote">Slides advance manually. Illustrations explain concepts; they are not experimental results. No internet connection or external libraries are required.</p></dialog>
+  <dialog id="jump-dialog"><div class="dialog-heading"><h2>The presentation</h2><button class="close-button" data-close="jump-dialog">Close</button></div><div id="slide-list"></div></dialog>
+  <aside class="notes-panel" id="notes-panel" aria-labelledby="notes-title" hidden><div class="dialog-heading"><h2 id="notes-title">Speaker notes</h2><button class="close-button" id="close-notes">Close</button></div><p class="notes-timing" id="notes-timing"></p><div id="notes-content"></div><p class="notes-reminder">These notes are visible on this screen. Close them before projecting.</p></aside>
+  <div id="announcement" class="sr-only" aria-live="polite"></div>
+</body>
+</html>
